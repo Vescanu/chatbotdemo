@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Widget Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Force the chat widget to our desired size */
+    .n8n-chat-widget {
+      width: 600px !important;      /* default desktop width */
+      height: 800px !important;     /* default desktop height */
+      bottom: 20px !important;
+      right: 20px !important;
+      border-radius: 12px !important;
+      position: fixed !important;
+      z-index: 9999 !important;
+      transition: all 0.3s ease !important;
+    }
+
+    /* Mobile override */
+    @media (max-width: 768px) {
+      .n8n-chat-widget {
+        width: 95vw !important;
+        height: 90vh !important;
+        bottom: 5px !important;
+        right: 5px !important;
+        border-radius: 12px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    window.ChatWidgetConfig = {
+      webhook: {
+        url: 'https://jenniferbalauru.app.n8n.cloud/webhook/039cf66c-8c9f-4134-bd5f-d1da2fdee73e/chat',
+        route: 'general'
+      },
+      branding: {
+        logo: 'https://i.postimg.cc/QCNFTm5K/IMG-1895-removebg-preview.png',
+        name: 'EasyBooker.io',
+        welcomeText: 'Hi 👋, how can we help?',
+        responseTimeText: 'We usually respond right away'
+      },
+      style: {
+        primaryColor: '#54dde4',
+        secondaryColor: '#172565',
+        backgroundColor: '#ffffff',
+        fontColor: '#333333',
+        userMessageColor: '#0066ff',
+        userTextColor: '#ffffff',
+        botMessageColor: '#f1f3f4',
+        botTextColor: '#000000',
+        borderRadius: '12px',
+        fontFamily: 'Inter, sans-serif'
+      }
+    };
+
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/gh/WayneSimpson/n8n-chatbot-template@ba944c3/chat-widget.js';
+    script.onload = () => {
+      // MutationObserver to enforce sizes after widget loads
+      const observer = new MutationObserver((mutations, obs) => {
+        const widget = document.querySelector('.n8n-chat-widget');
+        if (widget) {
+          // Force the styles again in case the script overwrote them
+          widget.style.setProperty('width', window.innerWidth <= 768 ? '95vw' : '600px', 'important');
+          widget.style.setProperty('height', window.innerWidth <= 768 ? '90vh' : '800px', 'important');
+          widget.style.setProperty('bottom', window.innerWidth <= 768 ? '5px' : '20px', 'important');
+          widget.style.setProperty('right', window.innerWidth <= 768 ? '5px' : '20px', 'important');
+          widget.style.setProperty('border-radius', '12px', 'important');
+          obs.disconnect();
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+
+      // Also resize dynamically on window resize
+      window.addEventListener('resize', () => {
+        const widget = document.querySelector('.n8n-chat-widget');
+        if (widget) {
+          widget.style.setProperty('width', window.innerWidth <= 768 ? '95vw' : '600px', 'important');
+          widget.style.setProperty('height', window.innerWidth <= 768 ? '90vh' : '800px', 'important');
+          widget.style.setProperty('bottom', window.innerWidth <= 768 ? '5px' : '20px', 'important');
+          widget.style.setProperty('right', window.innerWidth <= 768 ? '5px' : '20px', 'important');
+        }
+      });
+    };
+    document.body.appendChild(script);
+  </script>
+</body>
+</html>
