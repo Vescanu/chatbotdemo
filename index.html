@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Widget Test</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* Default widget size for desktop */
+    .n8n-chat-widget {
+      width: 350px !important;
+      height: 500px !important;
+      border-radius: 12px !important;
+    }
+
+    .n8n-chat-widget .chat-container {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    /* Make it bigger on mobile */
+    @media (max-width: 768px) {
+      .n8n-chat-widget {
+        width: 90vw !important;    /* almost full width */
+        height: 70vh !important;   /* taller for mobile */
+        bottom: 10px !important;   /* keep some spacing from edges */
+        right: 5% !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    window.ChatWidgetConfig = {
+      webhook: {
+        url: 'https://jenniferbalauru.app.n8n.cloud/webhook/039cf66c-8c9f-4134-bd5f-d1da2fdee73e/chat',
+        route: 'general'
+      },
+      branding: {
+        logo: 'https://i.postimg.cc/QCNFTm5K/IMG-1895-removebg-preview.png',
+        name: 'EasyBooker.io',
+        welcomeText: 'Hi 👋, how can we help?',
+        responseTimeText: 'We usually respond right away'
+      },
+      style: {
+        primaryColor: '#54dde4',
+        secondaryColor: '#172565',
+        backgroundColor: '#ffffff',
+        fontColor: '#333333',
+        userMessageColor: '#0066ff',
+        userTextColor: '#ffffff',
+        botMessageColor: '#f1f3f4',
+        botTextColor: '#000000',
+        borderRadius: '12px',
+        fontFamily: 'Inter, sans-serif'
+      }
+    };
+
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/gh/WayneSimpson/n8n-chatbot-template@ba944c3/chat-widget.js';
+    document.body.appendChild(script);
+  </script>
+</body>
+</html>
