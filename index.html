@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EasyBooker.io Virtual Assistant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ---------- Global Page Style ---------- */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+      overflow: hidden;
+      position: relative;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ---------- Title Styling ---------- */
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      text-align: center;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    /* ---------- Subtitle Styling ---------- */
+    p.subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 40px;
+      text-align: center;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    /* ---------- Chat Iframe Styling ---------- */
+    iframe {
+      width: 400px;
+      height: 620px;
+      border: none;
+      border-radius: 24px;
+      background: #ffffff;
+      box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.25),
+        0 5px 15px rgba(0, 0, 0, 0.1);
+      animation: float 6s ease-in-out infinite, fadeInUp 1.5s ease forwards;
+      transition: all 0.3s ease;
+    }
+
+    iframe:hover {
+      transform: scale(1.02);
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ---------- Animations ---------- */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------- Responsive Design ---------- */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+        margin-top: 20px;
+      }
+      p.subtitle {
+        font-size: 1rem;
+        margin-bottom: 25px;
+      }
+      iframe {
+        width: 90%;
+        height: 70%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>💬 EasyBooker Virtual Assistant</h1>
+  <p class="subtitle">We’re here 24/7 to help you with bookings, support, and more.</p>
+
+  <iframe
+    src="https://jenniferbalauru.app.n8n.cloud/webhook/039cf66c-8c9f-4134-bd5f-d1da2fdee73e/chat"
+    title="EasyBooker Chat Assistant"
+    allow="clipboard-write"
+  ></iframe>
+</body>
+</html>
